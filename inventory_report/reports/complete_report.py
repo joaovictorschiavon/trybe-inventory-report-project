@@ -22,9 +22,9 @@ class CompleteReport(SimpleReport):
                 count_companies[item['nome_da_empresa']] = 1
             else:
                 count_companies[item['nome_da_empresa']] += 1
-        answer = "\nProdutos estocados por empresa:\n"
+        answer = "Produtos estocados por empresa:\n"
         for h in count_companies.items():
             answer += f"- {h[0]}: {h[1]}\n"
-        teste = SimpleReport.generate(list)
-        final = teste + answer
+        first = SimpleReport.generate(list)
+        final = first + "\n" + answer
         return final
