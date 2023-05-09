@@ -2,6 +2,9 @@ from datetime import datetime
 
 
 class SimpleReport:
+    # def __init__(self):
+    #     print("parent class")
+
     @staticmethod
     def str_to_date(x):
         if isinstance(x, str):
