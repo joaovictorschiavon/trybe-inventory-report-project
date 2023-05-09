@@ -2,8 +2,19 @@ from datetime import datetime
 
 
 class SimpleReport:
-    # def __init__(self):
-    #     print("parent class")
+    fabrication_date = datetime.now().date()
+    expiration_date = datetime.max.date()
+    new_dict = dict()
+    most_products_company = ""
+    most_product_number = 0
+
+    @staticmethod
+    def reset_initial_values():
+        __class__.fabrication_date = datetime.now().date()
+        __class__.expiration_date = datetime.max.date()
+        __class__.new_dict = dict()
+        __class__.most_products_company = ""
+        __class__.most_product_number = 0
 
     @staticmethod
     def str_to_date(x):
@@ -11,12 +22,6 @@ class SimpleReport:
             return datetime.strptime(x, "%Y-%m-%d").date()
         else:
             return x
-
-    fabrication_date = datetime.now().date()
-    expiration_date = datetime.max.date()
-    new_dict = dict()
-    most_products_company = ""
-    most_product_number = 0
 
     @staticmethod
     def company_count():
@@ -31,6 +36,7 @@ class SimpleReport:
 
     @staticmethod
     def generate(list):
+        SimpleReport.reset_initial_values()
         for item in list:
             if __class__.str_to_date(
                 item["data_de_fabricacao"]
@@ -52,10 +58,11 @@ class SimpleReport:
                 __class__.new_dict[item["nome_da_empresa"]] = 1
             __class__.company_count()
 
-        return (
+        result = (
             "Data de fabricação mais antiga:"
             + f" {__class__.datetime_to_str(__class__.fabrication_date)}\n"
             + "Data de validade mais próxima:"
             + f" {__class__.datetime_to_str(__class__.expiration_date)}\n"
             + f"Empresa com mais produtos: {__class__.most_products_company}"
         )
+        return result

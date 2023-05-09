@@ -1,9 +1,7 @@
-from ..reports.simple_report import SimpleReport
+from inventory_report.reports.simple_report import SimpleReport
 
 
 class CompleteReport(SimpleReport):
-    def __init__(self):
-        self.new_dict = self.new_dict
 
     @staticmethod
     def generate(list):
